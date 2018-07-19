@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.OrderMapper">
+
+    <select id="getCount" resultType="int">
+		select count(*) from xc_order_list
+	</select>
+
+    <select id="getOrderList" resultType="com.klxc.pojo.Order">
+		select ol.*, pi.city, pi.area, pi.`name` place_name, ui.user_nicname, ui.telephone from 
+		(select * from xc_order_list where pay_done = 1)  as ol
+		left join users_info ui
+		on ol.user_tid = ui.user_id
+		left join place_info pi
+		on ol.place_id = pi.id
+		order by ol.tid desc
+		limit #{0},#{1}
+	</select>
+
+    <select id="getCityOrderCount" resultType="int">
+		select count(*) from  xc_order_list ol 
+		where pay_done = 1 and ol.invitation_code in 
+		(select code from xc_invite_code where state = 0 and city = #{0})
+	</select>
+
+    <select id="getCityOrderList" resultType="com.klxc.pojo.Order">
+		select ol.*, pi.city, pi.area, pi.`name` place_name, ui.user_nicname, ui.telephone from 
+		(select * from  xc_order_list ol 
+		where pay_done = 1 and ol.invitation_code in 
+		(select code from xc_invite_code where state = 0 and city = #{0}))  as ol
+		left join users_info ui
+		on ol.user_tid = ui.user_id
+		left join place_info pi
+		on ol.place_id = pi.id
+		order by ol.tid desc 
+		limit #{1},#{2}
+	</select>
+
+    <select id="getCountById" resultType="int">
+		select count(*) from  xc_order_list ol 
+		where pay_done = 1 and ol.invitation_code in 
+		(select code from xc_invite_code where state = 0 and create_id = #{0})
+	</select>
+
+    <select id="getOrderListById" resultType="com.klxc.pojo.Order">
+		select ol.*, pi.city, pi.area, pi.`name` place_name, ui.user_nicname, ui.telephone from 
+		(select * from  xc_order_list ol 
+		where pay_done = 1 and ol.invitation_code in 
+		(select code from xc_invite_code where state = 0 and create_id = #{0}))  as ol
+		left join users_info ui
+		on ol.user_tid = ui.user_id
+		left join place_info pi
+		on ol.place_id = pi.id
+		order by ol.tid desc 
+		limit #{1},#{2}
+	</select>
+
+</mapper>

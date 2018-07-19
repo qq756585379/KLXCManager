@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.UserMapper">
+
+    <sql id="Base_Column_List">
+        id,username,nickName,password,email,phone,question,answer,role,tab_info,create_time,update_time
+    </sql>
+
+    <select id="getUser" resultType="com.klxc.pojo.User">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from user
+        where username = #{0}
+        and password = #{1}
+    </select>
+
+    <select id="getAllUserList" resultType="com.klxc.pojo.User">
+        select u.*, ur.name as userRoleStr from xc_mng_users u, xc_mng_user_role ur where u.UserRole=ur.tid
+    </select>
+
+    <select id="getUserInfo" resultType="com.klxc.pojo.User">
+        select * from xc_mng_users where NickName=#{0}
+    </select>
+
+    <select id="getUserById" resultType="com.klxc.pojo.User">
+        select * from xc_mng_users where userId=#{0}
+    </select>
+
+    <insert id="addUser" parameterType="com.klxc.pojo.User" useGeneratedKeys="true" keyProperty="userId">
+        insert into xc_mng_users
+        (UserName, UserPassword, NickName, UserType, UserRole, phone, CreateTime)
+        values
+        (#{userName},#{userPassword},#{nickName},#{userType},#{userRole},#{phone},#{createTime})
+    </insert>
+
+    <update id="uptUser" parameterType="com.klxc.pojo.User">
+        update xc_mng_users
+        set NickName=#{nickName},phone=#{phone}
+        where userId=#{userId}
+    </update>
+
+    <update id="uptPwd">
+        update xc_mng_users
+        set UserPassword=#{1}
+        where userId=#{0}
+    </update>
+
+</mapper>

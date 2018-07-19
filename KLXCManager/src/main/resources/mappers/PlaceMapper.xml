@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.PlaceMapper">
+
+    <select id="getPlaceCount" resultType="int">
+		select count(*) from place_info
+	</select>
+
+    <select id="getPlaceList" resultType="com.klxc.pojo.PlaceInfo">
+		select * from place_info order by id desc limit #{0}, #{1}
+	</select>
+
+    <select id="getPlaceListByCity" resultType="com.klxc.pojo.PlaceInfo">
+		select * from place_info where city = #{0}  order by id desc
+	</select>
+
+    <select id="getPlaceInfo" resultType="com.klxc.pojo.PlaceInfo">
+		select * from place_info where id=#{0}
+	</select>
+
+    <update id="uptPlace" parameterType="com.klxc.pojo.PlaceInfo">
+        update place_info
+        set
+        name=#{name},service_content=#{service_content},city=#{city},area=#{area},address=#{address},location=#{location}
+        <if test="img_url1 != ''">
+            ,img_url1=#{img_url1}
+        </if>
+        <if test="img_url2 != ''">
+            ,img_url2=#{img_url2}
+        </if>
+        <if test="img_url3 != ''">
+            ,img_url3=#{img_url3}
+        </if>
+        where id=#{id}
+    </update>
+
+    <insert id="addPlace" parameterType="com.klxc.pojo.PlaceInfo">
+		insert into place_info(
+		name, service_content, img_url1, img_url2, img_url3, 
+		city, area, address, location, create_time)
+		values(
+		#{name},#{service_content},#{img_url1},#{img_url2},#{img_url3},
+		#{city},#{area},#{address},#{location},#{create_time})
+	</insert>
+
+    <delete id="delPlace">
+		delete from place_info where id=#{0}
+	</delete>
+
+</mapper>

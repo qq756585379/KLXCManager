@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.CityLMapper">
+
+    <select id="getLeaderCount" resultType="int">
+		select count(*) from xc_leader_city
+	</select>
+
+    <select id="getLeaderList" resultType="com.klxc.pojo.LeaderInfo">
+		select * from xc_leader_city order by id desc limit #{0},#{1} 
+	</select>
+
+    <select id="getLeaderListById" resultType="com.klxc.pojo.LeaderInfo">
+		select * from xc_leader_city where user_id=#{0}
+	</select>
+
+    <insert id="addLeader" parameterType="com.klxc.pojo.LeaderInfo">
+		insert into xc_leader_city
+		(city, user_id, user_name, user_phone, create_id, create_time)
+		values
+		(#{city},#{user_id},#{user_name},#{user_phone},#{create_id},#{create_time})
+	</insert>
+
+    <delete id="delLeader" parameterType="int">
+		delete from xc_leader_city where id=#{0}
+	</delete>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.BannerMapper">
+
+    <select id="getBannerList" resultType="com.klxc.pojo.BannerInfo">
+		select * from xc_mng_banner
+	</select>
+
+    <insert id="addBanner" parameterType="com.klxc.pojo.BannerInfo">
+		insert into xc_mng_banner
+		(url, create_time)
+		values
+		(#{url},#{create_time})
+	</insert>
+
+    <update id="uptBanner" parameterType="com.klxc.pojo.BannerInfo">
+		update xc_mng_banner
+		set url=#{url}
+		where id=#{id}
+	</update>
+
+    <delete id="delBanner" parameterType="int">
+		delete from xc_mng_banner
+		where id=#{0}
+	</delete>
+
+</mapper>

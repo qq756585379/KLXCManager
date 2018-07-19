@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tab>
+    <tab1 id="t1" lid="li_index" name="主页" url="head/index">
+
+    </tab1>
+
+    <tab1 id="t2" lid="li_operate" name="运营" url="head/operate">
+        <tab2 id="t2_1" name="产品活动" url="banner/getBanner"/>
+        <tab2 id="t2_2" name="教练列表" url="coach/getCoach"/>
+        <tab2 id="t2_3" name="我要处理的审批" url="coach/toApprove"/>
+    </tab1>
+
+    <tab1 id="t3" lid="li_market" name="市场" url="head/market">
+        <tab2 id="t3_1" name="资料上传" url="coach/toAddCoach"/>
+        <tab2 id="t3_2" name="我提交的审批" url="coach/toSubApprove"/>
+        <tab2 id="t3_3" name="订单列表" url="order/getOrderList"/>
+        <tab2 id="t3_4" name="支付列表" url="order/getPayList"/>
+    </tab1>
+
+    <tab1 id="t4" lid="li_city" name="城市管理" url="head/city">
+        <tab2 id="t4_1" name="城市优惠列表" url="cityR/getCityRebate"/>
+        <tab2 id="t4_2" name="城市优惠添加" url="cityR/toAddCityRebate"/>
+        <!--
+        <tab2 id="t4_3" name="城市负责人列表" url="city/getCityLeader" />
+        <tab2 id="t4_4" name="城市负责人添加" url="city/toAddCityLeader" />
+         -->
+        <tab2 id="t4_5" name="区域负责人列表" url="city/getAreaLeader"/>
+        <tab2 id="t4_6" name="区域负责人列表" url="city/toAddAreaLeader"/>
+    </tab1>
+
+    <tab1 id="t5" lid="li_user" name="用户管理" url="head/user">
+        <tab2 id="t5_1" name="用户列表" url="user/getUserList"/>
+        <tab2 id="t5_2" name="用户添加" url="user/toAddUser"/>
+    </tab1>
+
+    <tab1 id="t6" lid="li_perm" name="权限管理" url="head/permission">
+        <tab2 id="t6_1" name="权限管理" url="perm/getPermList"/>
+    </tab1>
+
+    <tab1 id="t7" lid="li_about" name="关于我们" url="head/about">
+    </tab1>
+
+</tab>

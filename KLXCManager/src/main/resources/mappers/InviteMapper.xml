@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.InviteMapper">
+
+    <select id="getInviteCount" resultType="int">
+		select count(*) from xc_invite_code where state = 0
+	</select>
+
+    <select id="getInviteList" resultType="com.klxc.pojo.InviteCode">
+		select * from xc_invite_code where state = 0 limit #{0}, #{1}
+	</select>
+
+    <select id="getCityInviteCount" resultType="int">
+		select count(*) from xc_invite_code ic, 
+		(select city from xc_leader_city where user_id = #{0}) lc
+		where ic.city = lc.city
+	</select>
+
+    <select id="getCityInviteList" resultType="com.klxc.pojo.InviteCode">
+		select * from xc_invite_code ic, 
+		(select city from xc_leader_city where user_id = #{2}) lc
+		where ic.city = lc.city
+		limit #{0}, #{1}
+	</select>
+
+    <select id="getInviteCountById" resultType="int">
+		select count(*) from xc_invite_code where state = 0 and create_id = #{0}
+	</select>
+
+    <select id="getInviteListById" resultType="com.klxc.pojo.InviteCode">
+		select * from xc_invite_code where create_id = #{2} and state = 0 limit #{0}, #{1}
+	</select>
+
+    <insert id="addInvite" parameterType="com.klxc.pojo.InviteCode" useGeneratedKeys="true" keyProperty="id">
+		insert into xc_invite_code(name, type, phone, city, area, create_id, create_name, create_time)
+		values(#{name},#{type},#{phone},#{city},#{area},#{create_id},#{create_name},#{create_time})
+	</insert>
+
+    <update id="uptInvite">
+		update xc_invite_code set code = #{1} where id=#{0}
+	</update>
+
+    <update id="delInvite">
+		update xc_invite_code set state = 1 where id=#{0}
+	</update>
+
+</mapper>

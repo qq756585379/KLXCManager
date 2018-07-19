@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.PClassMapper">
+
+    <select id="getClassCount" resultType="int">
+		select count(*) from
+		place_class_new
+	</select>
+
+    <select id="getClassInfo" resultType="com.klxc.pojo.PlaceClass">
+		select * from place_class_new
+		where id = #{0}
+	</select>
+
+    <select id="getClassList" resultType="com.klxc.pojo.PlaceClass">
+		select pc.*, pi.`name` as place_name, pcr.rid from place_class_new pc
+		left join place_info pi
+		on pc.place_id = pi.id
+		left join place_class_recom pcr
+		on pc.id = pcr.class_id
+		order by pc.city, place_id
+		limit #{0}, #{1}
+	</select>
+
+    <update id="uptClass" parameterType="com.klxc.pojo.PlaceClass">
+		update place_class_new
+		set
+		name=#{name},price=#{price},price_open=#{price_open},price_hour=#{price_hour},
+		total_hour=#{total_hour},min_hour=#{min_hour},save_money=#{save_money},save_time=#{save_time},
+		lesson=#{lesson},class_type=#{class_type},city=#{city},service_content=#{service_content},
+		bus_plan=#{bus_plan},price_remark=#{price_remark}, place_id=#{place_id}
+		where id=#{id}
+	</update>
+
+    <insert id="addClass" parameterType="com.klxc.pojo.PlaceClass">
+		insert into place_class_new(
+		name, price, price_open, price_hour,
+		total_hour,
+		min_hour, save_money, save_time, lesson, class_type,
+		city, service_content, bus_plan, price_remark, place_id, create_time)
+		values(
+		#{name},#{price},#{price_open},#{price_hour},#{total_hour},
+		#{min_hour},#{save_money},#{save_time},#{lesson},#{class_type},
+		#{city},#{service_content},#{bus_plan},#{price_remark},#{place_id},#{create_time})
+	</insert>
+
+    <delete id="delClass">
+		delete from place_class_new where id=#{0}
+	</delete>
+</mapper>

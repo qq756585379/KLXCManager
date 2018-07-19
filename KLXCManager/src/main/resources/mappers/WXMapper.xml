@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.WXMapper">
+
+    <select id="getWxSignCount" resultType="int">
+		select count(*) from wx_sign_up_info
+	</select>
+
+    <select id="getWxSignList" resultType="com.klxc.pojo.WxSignInfo">
+		select * from wx_sign_up_info order by state, id desc limit #{0}, #{1}
+	</select>
+
+    <update id="setWxSignState">
+		update set state = 1 from wx_sign_up_info where id = #{0}
+	</update>
+
+    <select id="getWxJoinCount" resultType="int">
+		select count(*) from wx_join_up_info
+	</select>
+
+    <select id="getWxJoinList" resultType="com.klxc.pojo.WxJoinInfo">
+		select * from wx_join_up_info order by state, id desc limit #{0}, #{1}
+	</select>
+
+    <update id="setWxJoinState">
+		update set state = 1 from wx_join_up_info where id = #{0}
+	</update>
+
+</mapper>

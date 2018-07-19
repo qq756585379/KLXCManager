@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.RecomMapper">
+
+    <select id="getRecomCount" resultType="int">
+		select count(*) from place_class_recom
+	</select>
+
+    <select id="getRecomList" resultType="com.klxc.pojo.PlaceClass">
+		select pcr.rid, pc.*, pi.`name` as place_name, pi.img_url1 as place_url ,pi.address, pi.location 
+		from place_class_recom pcr
+		left join place_class_new pc
+		on pcr.class_id = pc.id
+		left join place_info pi
+		on pc.place_id = pi.id
+		order by pcr.city
+		limit #{0}, #{1} 
+	</select>
+
+    <select id="getOpenCity" resultType="com.klxc.pojo.OpenCity">
+		select * from open_city
+	</select>
+
+    <select id="getClassListByCity" resultType="com.klxc.pojo.PlaceClass">
+		select * from
+		place_class_new where city = #{0}
+	</select>
+
+    <delete id="addRecomClass" parameterType="com.klxc.pojo.RecomClass">
+		insert into
+		place_class_recom(class_id, city, create_time)
+		values(#{class_id},#{city},#{create_time})
+	</delete>
+
+    <delete id="delRecomClass">
+		delete from place_class_recom where rid=#{0}
+	</delete>
+</mapper>

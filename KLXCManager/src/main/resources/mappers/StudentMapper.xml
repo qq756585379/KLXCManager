@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.StudentMapper">
+
+    <select id="getStudentCount" resultType="int">
+		select count(*) from course_student cs, xc_order_list ol
+		where cs.order_id = ol.tid
+	</select>
+
+    <select id="getStudentList" resultType="com.klxc.pojo.StudentInfo">
+		select * from course_student cs
+		left join users_info ui
+		on cs.stu_id = ui.user_id
+		left join place_class_new pc
+		on cs.class_id = pc.id 
+		left join place_info pi
+		on cs.place_id = pi.id
+		order by tid desc
+		limit #{0}, #{1}
+	</select>
+
+    <select id="getStudentInfo" resultType="com.klxc.pojo.StudentInfo">
+		select cs.*, ui.user_nicname as stu_name, ui.telephone as stu_phone, pc.class_type, pc.price as class_money, pi.`name` as place_name 
+		from course_student cs, users_info ui, place_class_new pc, place_info pi
+		where cs.stu_id = ui.user_id and cs.class_id = pc.id and cs.place_id = pi.id
+		and cs.tid = #{0}
+	</select>
+
+
+    <select id="getCoachList" resultType="com.klxc.pojo.CoachBean">
+        select tid as coach_id, coach_name, coach_school_name
+        from coach_info
+        where coach_school_name in
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <update id="uptStudent" parameterType="com.klxc.pojo.StudentInfo">
+		update course_student
+		set coach_id=#{coach_id}
+		where tid=#{tid}
+	</update>
+
+</mapper>

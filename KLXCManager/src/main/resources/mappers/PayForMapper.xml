@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.PayForMapper">
+
+    <select id="getPayForList" resultType="com.klxc.pojo.PayForInfo">
+		select * from wx_pay_for_info where state = 0
+	</select>
+
+    <update id="uptPayFor">
+		update wx_pay_for_info set state = 1 where state = 0
+	</update>
+
+</mapper>

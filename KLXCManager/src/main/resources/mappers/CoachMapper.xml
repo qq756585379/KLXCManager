@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.CoachMapper">
+
+    <select id="getCoachCount" resultType="int">
+		select count(*) from coach_infos
+	</select>
+
+    <select id="getCoachList" resultType="com.klxc.pojo.Coach">
+		select ci.*, pi.`name` as place_name, pc.`name` as class_name 
+		from coach_infos ci
+		left join place_info pi
+		on ci.place_id = pi.id
+		left join place_class_new pc
+		on ci.class_id = pc.id
+		order by id desc 
+		limit #{0},#{1}
+	</select>
+
+    <select id="getCoachInfo" resultType="com.klxc.pojo.Coach">
+		select * from coach_infos where id = #{0}
+	</select>
+
+    <insert id="addCoach" parameterType="com.klxc.pojo.Coach">
+		insert into coach_infos
+		(coach_name, coach_sex, coach_school_age, coach_driving_years, 
+		place_id, class_id, coach_lesson, coach_favicon_url, coach_city, 
+		coach_area, coach_telephone, car_no, car_type, sign_num, 
+		pass_rate_two, pass_rate_three, create_time)
+		values
+		(#{coach_name},#{coach_sex},#{coach_school_age},#{coach_driving_years}
+		,#{place_id},#{class_id},#{coach_lesson},#{coach_favicon_url},#{coach_city}
+		,#{coach_area},#{coach_telephone},#{car_no},#{car_type},#{sign_num}
+		,#{pass_rate_two},#{pass_rate_three},#{create_time})
+	</insert>
+
+    <update id="uptCoach" parameterType="com.klxc.pojo.Coach">
+        update coach_infos
+        set coach_name=#{coach_name},coach_sex=#{coach_sex},coach_school_age=#{coach_school_age}
+        ,coach_driving_years=#{coach_driving_years},place_id=#{place_id},class_id=#{class_id}
+        ,coach_lesson=#{coach_lesson},coach_city=#{coach_city}
+        ,coach_area=#{coach_area},coach_telephone=#{coach_telephone},car_no=#{car_no},car_type=#{car_type}
+        <if test="coach_favicon_url != ''">
+            ,coach_favicon_url=#{coach_favicon_url}
+        </if>
+        where id=#{id}
+    </update>
+
+    <update id="bingPlaceClass" parameterType="com.klxc.pojo.Coach">
+		update coach_infos
+		set place_id=#{1},class_id=#{2}
+		where id=#{0}
+	</update>
+
+</mapper>

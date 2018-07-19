@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.klxc.dao.PermissionMapper">
+
+    <select id="getPermList" resultType="com.klxc.pojo.Permission">
+        select * from xc_mng_user_role
+    </select>
+
+    <update id="uptPerm" parameterType="com.klxc.pojo.Permission">
+        update xc_mng_user_role
+        set tabinfo=#{tabinfo}
+        where tid=#{tid}
+    </update>
+
+    <insert id="addPerm" parameterType="com.klxc.pojo.Permission">
+        insert into xc_mng_user_role(name, remark)
+        values(#{name}, #{remark})
+    </insert>
+
+    <delete id="delPerm">
+        delete from xc_mng_user_role where tid=#{0}
+    </delete>
+
+</mapper>
