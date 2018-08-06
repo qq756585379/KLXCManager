@@ -1,33 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<html>
+<!DOCTYPE html>
+<html lang="zh-cn">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="renderer" content="webkit">
     <title>快来学车后台管理系统-登录</title>
-    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/pintuer.css">
     <link rel="stylesheet" href="css/admin.css">
 
     <script src="js/jquery.js"></script>
     <script src="js/pintuer.js"></script>
     <script src="js/respond.js"></script>
+    <script src="js/admin.js"></script>
 </head>
 
 <body>
 <div class="container">
     <div class="line">
         <div class="xs6 xm4 xs3-move xm4-move">
-            <form action="<%=basePath%>user/login.do" method="post">
-                <div class="panel" style="margin-top: 50px">
-                    <div class="panel-head">
-                        <strong>快来学车后台管理系统</strong>
-                    </div>
+            <br/><br/>
+            <br/><br/>
+            <form action="<%=basePath%>user/login" method="post">
+                <div class="panel">
+                    <div class="panel-head"><strong>快来学车后台管理系统</strong></div>
                     <div class="panel-body" style="padding:30px;">
                         <div class="form-group">
                             <div class="field field-icon-right">
@@ -52,5 +53,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>

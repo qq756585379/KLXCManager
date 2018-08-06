@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface TabMapper {
 
-    public List<TabBean> getTabList();
+    List<TabBean> getTabList();
 
-    public List<FunBean> getFunList();
+    List<FunBean> getFunList();
 
 }

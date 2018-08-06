@@ -1,12 +1,13 @@
 package com.klxc.dao;
 
 import com.klxc.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface UserMapper {
 
-    User getUser(String userName, String password);
+    User getUser(@Param("userName") String userName, @Param("password") String password);
 
     User getUserById(Integer id);
 

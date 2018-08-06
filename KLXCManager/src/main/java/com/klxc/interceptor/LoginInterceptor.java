@@ -15,8 +15,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     private final String LOGIN_URL = "/welcome.jsp";
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
-                             Object obj) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
         if (obj instanceof DefaultServletHttpRequestHandler) {
             return true;
         }

@@ -6,13 +6,18 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.klxc.common.Const;
 import com.klxc.pojo.User;
+import com.klxc.service.TabService;
 import com.klxc.service.UserService;
 import com.klxc.tool.Log;
 import com.klxc.tool.RequestTool;
+import com.klxc.util.TimeTool;
+import com.klxc.vo.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/user")
@@ -20,9 +25,8 @@ public class UserContro {
 
     @Autowired
     private UserService userService;
-//
-//    @Autowired
-//    private TabService tabService;
+    @Autowired
+    private TabService tabService;
 //
 //    @Autowired
 //    private PermService permService;
@@ -34,27 +38,30 @@ public class UserContro {
 //        return "user/useradd";
 //    }
 
-    @RequestMapping("login.do")
+    @RequestMapping("/login")
     public String login(HttpServletRequest request) {
-        String userName = RequestTool.getString(request, "userName");
-        String password = RequestTool.getString(request, "password");
-        Log.w(userName);
-        Log.w(password);
+        try {
+            String userName = RequestTool.getString(request, "userName");
+            String password = RequestTool.getString(request, "password");
+            User user = userService.login(userName, password);
+            if (user == null) {
+                return "login";
+            }
 
-        User user = userService.login(userName, password);
-        if (user == null) {
+            HttpSession session = request.getSession();
+            user.setPassword("");
+            session.setAttribute(Const.UserInfo, user);
+
+            UserData userData = new UserData();
+            userData.setLoginTime(TimeTool.formatDateTime(new Date()));
+            userData.setHasProve(user.getTabInfo());
+            session.setAttribute(Const.UserData, userData);
+            session.setAttribute(Const.Tab, tabService.getTabList(user.getTabInfo()));
+        } catch (Exception e) {
+            e.printStackTrace();
             return "login";
         }
 
-//        HttpSession session = request.getSession();
-//        user.setUserPassword("");
-//        session.setAttribute(Const.UserInfo, user);
-//
-//        UserData userData = new UserData();
-//        userData.setLoginTime(TimeTool.formatDateTime(new Date()));
-//        userData.setHasProve(user.getTabinfo());
-//        session.setAttribute(Const.UserData, userData);
-//        session.setAttribute(Const.Tab, tabService.getTabList(user.getTabinfo()));
         return "index";
     }
 

@@ -33,4 +33,8 @@ public class Md5 {
         }
         return hexValue.toString();
     }
+
+    public static void main(String[] args) {
+        Log.w(encoderMd5("123123"));
+    }
 }

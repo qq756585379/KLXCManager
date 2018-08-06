@@ -104,7 +104,7 @@ public class InviteContro {
         RequestTool.populate(request, info);
         User user = UserData.getUser(request);
         info.setCreate_id(user.getId());
-        info.setCreate_name(user.getNickName());
+        info.setCreate_name(user.getNickname());
         inviteService.addInvite(info);
         return "redirect:/invite/getUserInviteList";
     }

@@ -21,7 +21,7 @@ public class OrderContro {
     @Autowired
     private OrderService orderService;
 
-    private int pageSize = Const.pageSize20;
+    private int pageSize = 20;
 
     @RequestMapping("/getOrderList")
     public String getOrderList(HttpServletRequest request) {

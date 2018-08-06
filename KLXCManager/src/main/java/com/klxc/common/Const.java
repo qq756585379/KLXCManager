@@ -15,4 +15,9 @@ public class Const {
     public static final boolean isTest = true;
 
     public static final int Role_Manager = 1;
+
+    // 0:无效用户；1:区域负责人；2：后台管理人员
+    public static final int type_no = 0;
+    public static final int type_leader = 1;
+    public static final int type_mng = 2;
 }

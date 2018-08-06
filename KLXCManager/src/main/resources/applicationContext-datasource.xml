@@ -64,12 +64,8 @@
         <property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"></property>
     </bean>
 
-    <!--
-        mybatis自动扫描加载Sql映射文件/接口 : MapperScannerConfigurer sqlSessionFactory
-		basePackage:指定sql映射文件/接口所在的包（自动扫描）
-	-->
     <bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.mmall.dao"/>
+        <property name="basePackage" value="com.klxc.dao"/>
     </bean>
 
     <!-- 事务管理 : DataSourceTransactionManager dataSource:引用上面定义的数据源 -->

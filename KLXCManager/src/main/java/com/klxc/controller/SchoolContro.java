@@ -23,7 +23,7 @@ public class SchoolContro {
     @Autowired
     private SchoolService schoolService;
 
-    private int pageSize = Const.pageSize20;
+    private int pageSize = 20;
 
     @RequestMapping("/toSchoolAdd")
     public String toSchoolAdd() {

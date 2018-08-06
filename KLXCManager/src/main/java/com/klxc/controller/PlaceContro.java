@@ -25,7 +25,7 @@ public class PlaceContro {
     @Autowired
     private PlaceService placeService;
 
-    private int pageSize = Const.pageSize20;
+    private int pageSize = 20;
 
     @RequestMapping("/toPlaceAdd")
     public String toAddPlace() {
@@ -39,7 +39,6 @@ public class PlaceContro {
         request.setAttribute("info", info);
         return "place/placeedit";
     }
-
 
     @RequestMapping("/getPlaceList")
     public String getPlaceList(HttpServletRequest request) {

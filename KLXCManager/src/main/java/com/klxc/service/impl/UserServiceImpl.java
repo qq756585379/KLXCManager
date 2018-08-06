@@ -14,6 +14,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+    // @Resource
+    // private UserCoachMapper userCoachMapper;
 
     public User login(String userName, String password) {
         password = Md5.encoderMd5(password);

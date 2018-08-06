@@ -7,7 +7,6 @@ public class TabData {
     private String lid;
     private String name;
     private String url;
-
     private List<TabData> tabList;
 
     public String getId() {

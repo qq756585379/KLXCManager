@@ -17,7 +17,7 @@ public class User {
 
     private String username;//登录用户名
 
-    private String nickName;
+    private String nickname;
 
     private String password;
 

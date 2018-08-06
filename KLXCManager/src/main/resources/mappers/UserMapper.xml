@@ -8,12 +8,16 @@
     </sql>
 
     <select id="getUser" resultType="com.klxc.pojo.User">
-        SELECT
-        <include refid="Base_Column_List"/>
-        from user
-        where username = #{0}
-        and password = #{1}
+        select u.*, ur.tabinfo AS tabInfo
+         from xc_mng_users AS u, xc_mng_user_role AS ur
+        where u.role = ur.tid and u.username = #{userName} and u.password = #{password}
     </select>
+
+    <!--<select id="getUser" resultType="com.klxc.pojo.User">-->
+        <!--SELECT-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--from user where username = #{0} and password = #{1}-->
+    <!--</select>-->
 
     <select id="getAllUserList" resultType="com.klxc.pojo.User">
         select u.*, ur.name as userRoleStr from xc_mng_users u, xc_mng_user_role ur where u.UserRole=ur.tid

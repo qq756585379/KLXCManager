@@ -24,17 +24,17 @@ public class TabServiceImpl implements TabService {
         List<TabBean> tabList = tabMapper.getTabList();
         List<FunBean> funList = tabMapper.getFunList();
 
-        for (TabBean tab : tabList) {
-            if ("all".equals(tabInfo) || tabInfo.contains(tab.getId())) {
+        for (TabBean tabBean : tabList) {
+            if ("all".equals(tabInfo) || tabInfo.contains(tabBean.getId())) {
                 TabData data = new TabData();
-                data.setId(tab.getId());
-                data.setLid(tab.getLid());
-                data.setName(tab.getName());
-                data.setUrl(tab.getUrl());
+                data.setId(tabBean.getId());
+                data.setLid(tabBean.getLid());
+                data.setName(tabBean.getName());
+                data.setUrl(tabBean.getUrl());
 
                 List<TabData> funInfo = new ArrayList<TabData>();
                 for (FunBean fun : funList) {
-                    if (tab.getId() == null || !tab.getId().equals(fun.getPid())) {
+                    if (tabBean.getId() == null || !tabBean.getId().equals(fun.getPid())) {
                         continue;
                     }
                     if ("all".equals(tabInfo) || tabInfo.contains(fun.getId())) {
@@ -47,7 +47,6 @@ public class TabServiceImpl implements TabService {
                     }
                 }
                 data.setTabList(funInfo);
-
                 list.add(data);
             }
         }
