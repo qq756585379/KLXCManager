@@ -17,7 +17,6 @@ public class RebateServiceImpl implements RebateService {
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
         return rebateMapper.getCount();
     }
 
@@ -54,5 +53,4 @@ public class RebateServiceImpl implements RebateService {
         }
         return false;
     }
-
 }

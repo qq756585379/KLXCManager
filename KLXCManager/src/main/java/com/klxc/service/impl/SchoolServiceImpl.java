@@ -98,5 +98,4 @@ public class SchoolServiceImpl implements SchoolService {
         }
         return false;
     }
-
 }

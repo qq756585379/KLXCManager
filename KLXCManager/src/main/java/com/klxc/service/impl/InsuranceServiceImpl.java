@@ -51,5 +51,4 @@ public class InsuranceServiceImpl implements InsuranceService {
         }
         return new ArrayList<>();
     }
-
 }

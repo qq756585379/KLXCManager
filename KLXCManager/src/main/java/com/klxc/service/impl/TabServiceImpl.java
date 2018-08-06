@@ -51,9 +51,6 @@ public class TabServiceImpl implements TabService {
                 list.add(data);
             }
         }
-
-        // TODO Auto-generated method stub
         return list;
     }
-
 }

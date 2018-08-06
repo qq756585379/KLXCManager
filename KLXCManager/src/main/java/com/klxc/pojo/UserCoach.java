@@ -1,6 +1,7 @@
 package com.klxc.pojo;
 
 public class UserCoach {
+
     private int user_id;
     private String user_name;// '用户名'
     private String user_password;

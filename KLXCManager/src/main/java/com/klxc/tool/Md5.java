@@ -3,6 +3,7 @@ package com.klxc.tool;
 import java.security.MessageDigest;
 
 public class Md5 {
+
     public static String encoderMd5(String str) {
         if (UtilTool.isNull(str)) {
             return "";
@@ -31,11 +32,5 @@ public class Md5 {
             hexValue.append(Integer.toHexString(val));
         }
         return hexValue.toString();
-    }
-
-    public static void main(String[] args) {
-        String s = "123";
-        s = Md5.encoderMd5(s);
-        System.out.println("" + s);
     }
 }

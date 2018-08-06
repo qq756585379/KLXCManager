@@ -3,7 +3,7 @@
 
 <mapper namespace="com.klxc.dao.UserCoachMapper">
 
-	<insert id="addUserCoach" parameterType="klxc.usercoach.UserCoach">
+	<insert id="addUserCoach" parameterType="com.klxc.pojo.UserCoach">
 		insert into users_coach
 		(user_name, user_password, user_nicname, user_address, 
 		telephone, user_image, coach_id,  source_id, user_type)

@@ -4,28 +4,30 @@
 <mapper namespace="com.klxc.dao.AreaLMapper">
 
     <select id="getLeaderCount" resultType="int">
-		select count(*) from xc_leader_area
+		select count(*) from t_leader_info
 	</select>
 
     <select id="getLeaderList" resultType="com.klxc.pojo.LeaderInfo">
-		select * from xc_leader_area order by id desc limit #{0},#{1} 
+		select * from t_leader_info order by id desc limit #{0},#{1}
 	</select>
 
     <select id="getLeaderListById" resultType="com.klxc.pojo.LeaderInfo">
-		select * from xc_leader_area la, (select city from xc_leader_city where user_id = #{2}) lc
+		select * from
+		t_leader_info la,
+		(select city from xc_leader_city where user_id = #{2}) lc
 		where la.city = lc.city
 		limit #{0},#{1}
 	</select>
 
     <insert id="addLeader" parameterType="com.klxc.pojo.LeaderInfo">
-		insert into xc_leader_area
-		(city, area, user_id, user_name, user_phone, create_id, create_time)
+		insert into t_leader_info
+		(city, area, user_id, user_name, user_phone, create_id, create_time, update_time)
 		values
-		(#{city},#{area},#{user_id},#{user_name},#{user_phone},#{create_id},#{create_time})
+		(#{city},#{area},#{user_id},#{user_name},#{user_phone},#{create_id},#{create_time}, now())
 	</insert>
 
     <delete id="delLeader" parameterType="int">
-		delete from xc_leader_area where id=#{0}
+		delete from t_leader_info where id = #{0}
 	</delete>
 
 </mapper>
