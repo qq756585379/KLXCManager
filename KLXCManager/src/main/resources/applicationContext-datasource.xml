@@ -61,7 +61,11 @@
     <!--mybatis的SqlSession的工厂: SqlSessionFactoryBean dataSource:引用数据源 MyBatis定义数据源,同意加载配置 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"></property>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:mappers/*Mapper.xml</value>
+            </list>
+        </property>
     </bean>
 
     <bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
