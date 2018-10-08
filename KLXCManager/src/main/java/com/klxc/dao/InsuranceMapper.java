@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface InsuranceMapper {
 
-    public List<InsuranceInfo> getInsuranceList();
+    List<InsuranceInfo> getInsuranceList();
 
-    public void uptInsurance() throws Exception;
+    void uptInsurance() throws Exception;
 
 }
