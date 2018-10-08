@@ -3,7 +3,6 @@ package com.klxc.tool.email;
 /**
  * 发送邮件需要使用的基本信息
  */
-
 import java.util.Properties;
 
 public class MailInfo {

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
@@ -34,10 +35,14 @@ public class CoachContro {
         return "coach/coachadd";
     }
 
+    @RequestMapping("/toApprove")
+    public String toApprove(HttpServletRequest request) {
+        return "coach/coachadd";
+    }
+
     @RequestMapping("/getCoach")
     public String getCoach(HttpServletRequest request) {
         int curPage = RequestTool.getInt(request, "page");
-
         int totalSize = coachService.getCoachCount();
         List<Coach> list = coachService.getCoachList(curPage, pageSize);
         request.setAttribute("list", list);
@@ -55,7 +60,6 @@ public class CoachContro {
 
     @RequestMapping("/addCoach")
     public String addCoachTemp(@RequestParam("coach_favicon_url") MultipartFile file, HttpServletRequest request) {
-
         Coach coach = new Coach();
         RequestTool.populate(request, coach);
 
@@ -68,7 +72,6 @@ public class CoachContro {
         coach.setCoach_favicon_url(FileTool.getFileName(file));
 
         boolean succ = FileTool.saveFile(file);
-
         if (succ) {
             coachService.addCoach(coach);
         }
@@ -77,11 +80,9 @@ public class CoachContro {
 
     @RequestMapping("/uptCoach")
     public String uptCoach(@RequestParam("coach_favicon_url") MultipartFile file, HttpServletRequest request) {
-
         Coach coach = new Coach();
         RequestTool.populate(request, coach);
         coach.setCoach_favicon_url(FileTool.getFileName(file));
-
         boolean succ = FileTool.saveFile(file);
         if (succ) {
             coachService.uptCoach(coach);
@@ -92,15 +93,17 @@ public class CoachContro {
     @RequestMapping("/toBind")
     public String toBind(HttpServletRequest request) {
         int id = RequestTool.getInt(request, "id");
-        String city = RequestTool.getStringEncode(request, "city");
+        String city = request.getParameter("city");
+        // String city = RequestTool.getStringEncode(request, "city");
         if (UtilTool.isNull(city)) {
             city = "上海";
         }
         request.setAttribute("id", id);
         request.setAttribute("city", city);
         List<PlaceInfo> placelist = coachService.getPlaceList(city);
-        request.setAttribute("placelist", placelist);
         List<PlaceClass> clssList = coachService.getClassListByCity(city);
+
+        request.setAttribute("placelist", placelist);
         request.setAttribute("clssList", clssList);
         return "coach/bindplaceclass";
     }
@@ -112,5 +115,13 @@ public class CoachContro {
         int class_id = RequestTool.getInt(request, "class_id");
         coachService.bingPlaceClass(id, place_id, class_id);
         return "redirect:/coach/getCoach";
+    }
+
+    @RequestMapping("/coachInfo")
+    public String coachInfo(HttpServletRequest request) {
+        int id = RequestTool.getInt(request, "id");
+        Coach coach = coachService.getCoachInfo(id);
+        request.setAttribute("coach", coach);
+        return "coach/coachinfo";
     }
 }

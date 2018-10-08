@@ -37,9 +37,7 @@ public class AreaLServiceImpl implements AreaLService {
 
     @Override
     public boolean addLeader(LeaderInfo leader) {
-        if (leader == null) {
-            return false;
-        }
+        if (leader == null) return false;
         try {
             leader.setCreate_time(TimeTool.formatDateTime(new Date()));
             areaLMapper.addLeader(leader);

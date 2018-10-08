@@ -30,6 +30,6 @@ public class EmailTool {
 
     public static void main(String[] args) {
         String time = TimeTool.formatShortDateTime(new Date());
-        EmailTool.sendHtml("快来学车预报案人员信息-" + time, "qiujing@laixc.net", "qiujing@laixc.net", InsuranceData.getInsuranceHtml("", null));
+        EmailTool.sendHtml("快来学车预报案人员信息-" + time, "756585379@qq.com", "qiujing@laixc.net", InsuranceData.getInsuranceHtml("", null));
     }
 }

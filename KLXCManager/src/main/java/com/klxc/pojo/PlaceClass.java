@@ -19,11 +19,13 @@ public class PlaceClass {
     private String service_content; // 特色服务
     private String bus_plan;// 接送方案
     private String price_remark;// 费用说明
-
     private int place_id;
-    private String place_name;
-
     private String create_time; // 创建时间
+
+    private String place_name;
+    private String place_url;
+    private String address;
+    private String location;
 
     public int getRid() {
         return rid;
@@ -194,4 +196,27 @@ public class PlaceClass {
         this.create_time = create_time;
     }
 
+    public String getPlace_url() {
+        return place_url;
+    }
+
+    public void setPlace_url(String place_url) {
+        this.place_url = place_url;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }

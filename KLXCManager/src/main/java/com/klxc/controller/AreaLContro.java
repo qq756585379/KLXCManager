@@ -51,7 +51,6 @@ public class AreaLContro {
     @RequestMapping("/getLeaderList")
     public String getLeaderList(HttpServletRequest request) {
         int curPage = RequestTool.getInt(request, "page");
-
         int totalSize = areaLService.getLeaderCount();
         List<LeaderInfo> list = areaLService.getLeaderList(curPage, pageSize);
 

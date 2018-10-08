@@ -6,17 +6,17 @@ import java.util.List;
 
 public interface OrderService {
 
-	public int getOrderCount();
+    int getOrderCount();
 
-	public List<Order> getOrderList(int page, int pageSize);
-	
-	public String getCityById(int userId);
-	
-	public int getCityOrderCount(String city);
-	
-	public List<Order> getCityOrderList(String city, int page, int pageSize);
+    List<Order> getOrderList(int page, int pageSize);
 
-	public int getCountById(int userId);
+    String getCityById(int userId);
 
-	public List<Order> getOrderListById(int userId, int page, int pageSize);
+    int getCityOrderCount(String city);
+
+    List<Order> getCityOrderList(String city, int page, int pageSize);
+
+    int getCountById(int userId);
+
+    List<Order> getOrderListById(int userId, int page, int pageSize);
 }

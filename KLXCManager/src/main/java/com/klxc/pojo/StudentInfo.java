@@ -18,7 +18,6 @@ public class StudentInfo {
     private String hasCoach;
 
     private int order_id;
-
     private String create_time;
 
     public int getTid() {

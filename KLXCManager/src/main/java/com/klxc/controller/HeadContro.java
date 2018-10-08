@@ -58,7 +58,7 @@ public class HeadContro {
 
     @RequestMapping("/about")
     public String toAbout() {
-        return "/place/about";
+        return "/place";
     }
 
     @RequestMapping("/logout")

@@ -26,9 +26,8 @@ public class EmailTaskJob {
     private InsuranceService service;
 
     private void doInsuranceJob() {
-        if (service == null) {
-            return;
-        }
+        if (service == null) return;
+
         new Thread() {
             public void run() {
                 String time = TimeTool.formatShortDateTime(new Date());
@@ -43,9 +42,8 @@ public class EmailTaskJob {
     }
 
     private void doPayForJob() {
-        if (service == null) {
-            return;
-        }
+        if (service == null) return;
+
         new Thread() {
             public void run() {
                 String time = TimeTool.formatShortDateTime(new Date());

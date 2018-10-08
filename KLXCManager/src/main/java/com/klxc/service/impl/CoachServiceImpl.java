@@ -47,9 +47,7 @@ public class CoachServiceImpl implements CoachService {
 
     @Override
     public boolean addCoach(Coach coach) {
-        if (coach == null) {
-            return false;
-        }
+        if (coach == null) return false;
         try {
             coach.setCreate_time(TimeTool.formatDateTime(new Date()));
             coachMapper.addCoach(coach);
@@ -72,7 +70,6 @@ public class CoachServiceImpl implements CoachService {
             e.printStackTrace();
         }
         return false;
-
     }
 
     @Override
@@ -95,5 +92,4 @@ public class CoachServiceImpl implements CoachService {
         }
         return false;
     }
-
 }

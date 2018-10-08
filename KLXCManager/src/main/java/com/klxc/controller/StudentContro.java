@@ -29,7 +29,6 @@ public class StudentContro {
     @RequestMapping("/getAllStudentList")
     public String getAllStudentList(HttpServletRequest request) {
         int curPage = RequestTool.getInt(request, "page");
-
         int totalSize = studentService.getStudentCount();
         List<StudentInfo> list = studentService.getStudentList(curPage, pageSize);
         request.setAttribute("list", list);

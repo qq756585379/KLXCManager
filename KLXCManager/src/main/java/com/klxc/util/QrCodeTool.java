@@ -18,9 +18,8 @@ public class QrCodeTool {
     public static final String image_host = "http://114.55.54.228:89/images/";
 
     public static String createQr(String text) {
-        if (UtilTool.isNull(text)) {
-            return "";
-        }
+        if (UtilTool.isNull(text)) return "";
+
         try {
             File outputFile = new File(getPath(text));
             if (outputFile.exists()) {

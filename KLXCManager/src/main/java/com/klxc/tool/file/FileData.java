@@ -38,17 +38,17 @@ public class FileData {
         ImageIO.write(bi, "JPG", f);
     }
 
-//	public void write(String fileName, InputStream input) throws IOException {
-//	
-//	File file = new File(getImagePath(fileName));  
-//    try {  
-//        //使用common io的文件写入操作  
-//        FileUtilcopyInputStreamToFile(input, file);  
-//        //原来自己的文件写入操作  
-//        //saveFile(fileInputStream, file);  
-//    } catch (IOException ex) {  
-//        Logger.getLogger(UploadImageResource.class.getName()).log(Level.SEVERE, null, ex);  
-//    }  
+    // public void write(String fileName, InputStream input) throws IOException {
+    //     File file = new File(getImagePath(fileName));
+    //     try {
+    //         //使用common io的文件写入操作
+    //         FileUtilcopyInputStreamToFile(input, file);
+    //         //原来自己的文件写入操作
+    //         //saveFile(fileInputStream, file);
+    //     } catch (IOException ex) {
+    //         Logger.getLogger(UploadImageResource.class.getName()).log(Level.SEVERE, null, ex);
+    //     }
+    // }
 }
 
 	

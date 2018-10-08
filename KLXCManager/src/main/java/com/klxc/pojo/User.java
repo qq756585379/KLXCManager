@@ -17,6 +17,8 @@ public class User {
 
     private String username;//登录用户名
 
+    private Integer userType;
+
     private String nickname;
 
     private String password;
@@ -31,9 +33,11 @@ public class User {
 
     private Integer role;// 1:普通用户；1:区域负责人；2：后台管理人员
 
-    private Date createTime;
+    private String userRoleStr;
 
-    private Date updateTime;
+    private String createTime;
+
+    private String updateTime;
 
     private String tabInfo;
 }

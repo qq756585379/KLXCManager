@@ -27,7 +27,7 @@
 	</insert>
 
     <delete id="delLeader" parameterType="int">
-		delete from t_leader_info where id = #{0}
+		delete from t_leader_info where id = #{id}
 	</delete>
 
 </mapper>

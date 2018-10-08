@@ -51,7 +51,6 @@ public class CityLContro {
     @RequestMapping("/getLeaderList")
     public String getLeaderList(HttpServletRequest request) {
         int curPage = RequestTool.getInt(request, "page");
-
         int totalSize = cityLService.getLeaderCount();
         List<LeaderInfo> list = cityLService.getLeaderList(curPage, pageSize);
 

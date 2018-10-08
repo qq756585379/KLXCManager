@@ -39,13 +39,12 @@ public class FileTool {
         // 判断文件是否为空
         if (!file.isEmpty()) {
             try {
-                String path = Const.img_path;
-                File f = new File(path);
+                File f = new File(Const.img_path);
                 if (!f.exists()) {
                     f.mkdirs();
                 }
                 // 文件保存路径
-                String filePath = path + md5(file.getOriginalFilename());
+                String filePath = Const.img_path + md5(file.getOriginalFilename());
                 // 转存文件
                 file.transferTo(new File(filePath));
                 return true;

@@ -7,16 +7,16 @@ import java.util.List;
 
 public interface WXService {
 
-    public int getWxSignCount();
+    int getWxSignCount();
 
-    public List<WxSignInfo> getWxSignList(int page, int pageSize);
+    List<WxSignInfo> getWxSignList(int page, int pageSize);
 
-    public boolean setWxSignState(int id);
+    boolean setWxSignState(int id);
 
-    public int getWxJoinCount();
+    int getWxJoinCount();
 
-    public List<WxJoinInfo> getWxJoinList(int page, int pageSize);
+    List<WxJoinInfo> getWxJoinList(int page, int pageSize);
 
-    public boolean setWxJoinState(int id);
+    boolean setWxJoinState(int id);
 
 }

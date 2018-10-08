@@ -20,17 +20,13 @@ public class BannerServiceImpl implements BannerService {
     }
 
     @Override
-    public boolean addBanner(BannerInfo banner) {
-        if (banner == null) {
-            return false;
-        }
+    public void addBanner(BannerInfo banner) {
+        if (banner == null) return;
         try {
             bannerMapper.addBanner(banner);
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     @Override
@@ -48,13 +44,11 @@ public class BannerServiceImpl implements BannerService {
     }
 
     @Override
-    public boolean delBanner(int tid) {
+    public void delBanner(int tid) {
         try {
             bannerMapper.delBanner(tid);
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
     }
 }

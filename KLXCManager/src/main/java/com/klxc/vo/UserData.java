@@ -15,9 +15,7 @@ public class UserData {
 
     public static User getUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        if (session == null) {
-            return new User();
-        }
+        if (session == null) return new User();
         return (User) session.getAttribute(Const.UserInfo);
     }
 

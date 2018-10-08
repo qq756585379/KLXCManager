@@ -46,6 +46,7 @@ public class TimeTool {
                 return sf2.format(date);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return "";
     }

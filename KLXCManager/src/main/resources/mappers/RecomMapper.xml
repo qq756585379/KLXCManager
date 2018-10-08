@@ -8,14 +8,20 @@
 	</select>
 
     <select id="getRecomList" resultType="com.klxc.pojo.PlaceClass">
-		select pcr.rid, pc.*, pi.`name` as place_name, pi.img_url1 as place_url ,pi.address, pi.location 
-		from place_class_recom pcr
-		left join place_class_new pc
+		select
+		pcr.rid,
+		pc.*,
+		place_info.name as place_name,
+		place_info.img_url1 as place_url ,
+		place_info.address AS address,
+		place_info.location AS location
+		from place_class_recom AS pcr
+		left join place_class_new AS pc
 		on pcr.class_id = pc.id
-		left join place_info pi
-		on pc.place_id = pi.id
+		left join place_info
+		on pc.place_id = place_info.id
 		order by pcr.city
-		limit #{0}, #{1} 
+		limit #{page}, #{pageSize}
 	</select>
 
     <select id="getOpenCity" resultType="com.klxc.pojo.OpenCity">
@@ -23,8 +29,7 @@
 	</select>
 
     <select id="getClassListByCity" resultType="com.klxc.pojo.PlaceClass">
-		select * from
-		place_class_new where city = #{0}
+		select * from place_class_new where city = #{city}
 	</select>
 
     <delete id="addRecomClass" parameterType="com.klxc.pojo.RecomClass">
@@ -34,6 +39,6 @@
 	</delete>
 
     <delete id="delRecomClass">
-		delete from place_class_recom where rid=#{0}
+		delete from place_class_recom where rid=#{id}
 	</delete>
 </mapper>

@@ -19,5 +19,5 @@ public interface UserMapper {
 
     boolean uptUser(User user) throws Exception;
 
-    boolean uptPwd(Integer id, String password) throws Exception;
+    boolean uptPwd(@Param("id") Integer id, @Param("password") String password) throws Exception;
 }

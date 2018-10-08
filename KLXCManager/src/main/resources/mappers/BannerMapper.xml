@@ -15,11 +15,11 @@
 	</insert>
 
     <update id="uptBanner" parameterType="com.klxc.pojo.BannerInfo">
-		update xc_mng_banner set url=#{url} where id=#{id}
+		update xc_mng_banner set url = #{url} where id = #{id}
 	</update>
 
     <delete id="delBanner" parameterType="int">
-		delete from xc_mng_banner where id=#{0}
+		delete from xc_mng_banner where id = #{id}
 	</delete>
 
 </mapper>

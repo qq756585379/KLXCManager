@@ -27,7 +27,6 @@ public class OrderContro {
     public String getOrderList(HttpServletRequest request) {
         String pageStr = (String) request.getParameter("page");
         int curPage = UtilTool.toInteger(pageStr);
-
         int totalSize = orderService.getOrderCount();
         List<Order> list = orderService.getOrderList(curPage, pageSize);
 

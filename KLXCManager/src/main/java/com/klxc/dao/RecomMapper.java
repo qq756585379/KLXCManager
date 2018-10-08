@@ -3,21 +3,22 @@ package com.klxc.dao;
 import com.klxc.pojo.OpenCity;
 import com.klxc.pojo.PlaceClass;
 import com.klxc.pojo.RecomClass;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface RecomMapper {
 
-    public int getRecomCount();
+    int getRecomCount();
 
-    public List<PlaceClass> getRecomList(int page, int pageSize);
+    List<PlaceClass> getRecomList(@Param("page") int page, @Param("pageSize") int pageSize);
 
-    public List<OpenCity> getOpenCity();
+    List<OpenCity> getOpenCity();
 
-    public List<PlaceClass> getClassListByCity(String city);
+    List<PlaceClass> getClassListByCity(String city);
 
-    public void addRecomClass(RecomClass recom) throws Exception;
+    void addRecomClass(RecomClass recom) throws Exception;
 
-    public void delRecomClass(int id) throws Exception;
+    void delRecomClass(int id) throws Exception;
 
 }

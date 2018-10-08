@@ -15,11 +15,11 @@
 		left join place_class_new pc
 		on ci.class_id = pc.id
 		order by id desc 
-		limit #{0},#{1}
+		limit #{page},#{pageSize}
 	</select>
 
     <select id="getCoachInfo" resultType="com.klxc.pojo.Coach">
-		select * from coach_infos where id = #{0}
+		select * from coach_infos where id = #{id}
 	</select>
 
     <insert id="addCoach" parameterType="com.klxc.pojo.Coach">
@@ -49,8 +49,8 @@
 
     <update id="bingPlaceClass" parameterType="com.klxc.pojo.Coach">
 		update coach_infos
-		set place_id=#{1},class_id=#{2}
-		where id=#{0}
+		set place_id=#{place_id},class_id=#{class_id}
+		where id=#{id}
 	</update>
 
 </mapper>

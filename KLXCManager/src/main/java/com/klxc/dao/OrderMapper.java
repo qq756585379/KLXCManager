@@ -1,6 +1,7 @@
 package com.klxc.dao;
 
 import com.klxc.pojo.Order;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -8,14 +9,14 @@ public interface OrderMapper {
 
     public int getCount();
 
-    public List<Order> getOrderList(int start, int size);
+    List<Order> getOrderList(@Param("start") int start, @Param("size") int size);
 
     public int getCityOrderCount(String city);
 
-    public List<Order> getCityOrderList(String city, int start, int size);
+    List<Order> getCityOrderList(@Param("city") String city, @Param("start") int start, @Param("size") int size);
 
-    public int getCountById(int userId);
+    int getCountById(int userId);
 
-    public List<Order> getOrderListById(int userId, int start, int size);
+    List<Order> getOrderListById(@Param("userId") int userId, @Param("start") int start, @Param("size") int size);
 
 }

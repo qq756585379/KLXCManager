@@ -8,19 +8,19 @@ import java.util.List;
 
 public interface CoachService {
 
-    public int getCoachCount();
+    int getCoachCount();
 
-    public List<Coach> getCoachList(int page, int pageSize);
+    List<Coach> getCoachList(int page, int pageSize);
 
-    public Coach getCoachInfo(int id);
+    Coach getCoachInfo(int id);
 
-    public boolean addCoach(Coach coach);
+    boolean addCoach(Coach coach);
 
-    public boolean uptCoach(Coach coach);
+    boolean uptCoach(Coach coach);
 
-    public List<PlaceInfo> getPlaceList(String city);
+    List<PlaceInfo> getPlaceList(String city);
 
-    public List<PlaceClass> getClassListByCity(String city);
+    List<PlaceClass> getClassListByCity(String city);
 
-    public boolean bingPlaceClass(int id, int place_id, int class_id);
+    boolean bingPlaceClass(int id, int place_id, int class_id);
 }

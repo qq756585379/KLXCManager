@@ -8,52 +8,58 @@
 	</select>
 
     <select id="getOrderList" resultType="com.klxc.pojo.Order">
-		select ol.*, pi.city, pi.area, pi.`name` place_name, ui.user_nicname, ui.telephone from 
-		(select * from xc_order_list where pay_done = 1)  as ol
-		left join users_info ui
+		select ol.*,
+		pi.city,
+		pi.area,
+		pi.name AS place_name,
+		ui.user_nicname,
+		ui.telephone
+		from
+		(select * from xc_order_list where pay_done = 1) as ol
+		left join users_info AS ui
 		on ol.user_tid = ui.user_id
-		left join place_info pi
+		left join place_info AS pi
 		on ol.place_id = pi.id
 		order by ol.tid desc
-		limit #{0},#{1}
+		limit #{start},#{size}
 	</select>
 
     <select id="getCityOrderCount" resultType="int">
 		select count(*) from  xc_order_list ol 
 		where pay_done = 1 and ol.invitation_code in 
-		(select code from xc_invite_code where state = 0 and city = #{0})
+		(select code from xc_invite_code where state = 0 and city = #{city})
 	</select>
 
     <select id="getCityOrderList" resultType="com.klxc.pojo.Order">
 		select ol.*, pi.city, pi.area, pi.`name` place_name, ui.user_nicname, ui.telephone from 
 		(select * from  xc_order_list ol 
 		where pay_done = 1 and ol.invitation_code in 
-		(select code from xc_invite_code where state = 0 and city = #{0}))  as ol
+		(select code from xc_invite_code where state = 0 and city = #{city}))  as ol
 		left join users_info ui
 		on ol.user_tid = ui.user_id
 		left join place_info pi
 		on ol.place_id = pi.id
 		order by ol.tid desc 
-		limit #{1},#{2}
+		limit #{start},#{size}
 	</select>
 
     <select id="getCountById" resultType="int">
-		select count(*) from  xc_order_list ol 
+		select count(*) from xc_order_list ol
 		where pay_done = 1 and ol.invitation_code in 
-		(select code from xc_invite_code where state = 0 and create_id = #{0})
+		(select code from xc_invite_code where state = 0 and create_id = #{userId})
 	</select>
 
     <select id="getOrderListById" resultType="com.klxc.pojo.Order">
 		select ol.*, pi.city, pi.area, pi.`name` place_name, ui.user_nicname, ui.telephone from 
 		(select * from  xc_order_list ol 
 		where pay_done = 1 and ol.invitation_code in 
-		(select code from xc_invite_code where state = 0 and create_id = #{0}))  as ol
+		(select code from xc_invite_code where state = 0 and create_id = #{userId}))  as ol
 		left join users_info ui
 		on ol.user_tid = ui.user_id
 		left join place_info pi
 		on ol.place_id = pi.id
 		order by ol.tid desc 
-		limit #{1},#{2}
+		limit #{start},#{size}
 	</select>
 
 </mapper>

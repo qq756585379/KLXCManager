@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletResponse;
 
 public class JsonData {
+
     public static void renderData(HttpServletResponse response, String data) {
         PrintWriter printWriter = null;
         try {

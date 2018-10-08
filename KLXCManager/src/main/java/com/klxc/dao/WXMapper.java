@@ -7,16 +7,16 @@ import java.util.List;
 
 public interface WXMapper {
 
-    public int getWxSignCount();
+    int getWxSignCount();
 
-    public List<WxSignInfo> getWxSignList(int start, int size);
+    List<WxSignInfo> getWxSignList(int start, int size);
 
-    public void setWxSignState(int id) throws Exception;
+    void setWxSignState(int id) throws Exception;
 
-    public int getWxJoinCount();
+    int getWxJoinCount();
 
-    public List<WxJoinInfo> getWxJoinList(int start, int size);
+    List<WxJoinInfo> getWxJoinList(int start, int size);
 
-    public void setWxJoinState(int id) throws Exception;
+    void setWxJoinState(int id) throws Exception;
 
 }

@@ -91,8 +91,6 @@ public class InviteContro {
 
     @RequestMapping("/addInvite")
     public String addInvite(HttpServletRequest request) {
-
-
         String area_name = request.getParameter("area_name");
         if (UtilTool.isNull(area_name)) {
             request.setAttribute("msg", "你还没有负责区域，无法指定代理人");

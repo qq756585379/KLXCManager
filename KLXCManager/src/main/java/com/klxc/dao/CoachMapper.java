@@ -1,21 +1,21 @@
 package com.klxc.dao;
 
 import com.klxc.pojo.Coach;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface CoachMapper {
 
-    public int getCoachCount();
+    int getCoachCount();
 
-    public List<Coach> getCoachList(int page, int pageSize);
+    List<Coach> getCoachList(@Param("page") int page, @Param("pageSize") int pageSize);
 
-    public Coach getCoachInfo(int id);
+    Coach getCoachInfo(int id);
 
-    public void addCoach(Coach coach) throws Exception;
+    void addCoach(Coach coach) throws Exception;
 
-    public void uptCoach(Coach coach) throws Exception;
+    void uptCoach(Coach coach) throws Exception;
 
-    public void bingPlaceClass(int id, int place_id, int class_id) throws Exception;
-
+    void bingPlaceClass(@Param("id") int id, @Param("place_id") int place_id, @Param("class_id") int class_id) throws Exception;
 }

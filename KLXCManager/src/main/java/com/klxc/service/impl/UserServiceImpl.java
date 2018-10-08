@@ -23,17 +23,15 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean addUser(User user) {
-        if (user == null) {
-            return false;
-        }
+        if (user == null) return false;
         user.setPassword(Md5.encoderMd5(user.getPassword()));
         try {
             userMapper.addUser(user);
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
+        return true;
     }
 
     public User getUserById(Integer userId) {
@@ -49,9 +47,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean uptUser(User user) {
-        if (user == null) {
-            return false;
-        }
+        if (user == null) return false;
         user.setPassword(Md5.encoderMd5(user.getPassword()));
         try {
             userMapper.uptUser(user);

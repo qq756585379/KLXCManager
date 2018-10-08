@@ -8,15 +8,15 @@
 	</select>
 
     <select id="getPlaceList" resultType="com.klxc.pojo.PlaceInfo">
-		select * from place_info order by id desc limit #{0}, #{1}
+		select * from place_info order by id desc limit #{start}, #{size}
 	</select>
 
     <select id="getPlaceListByCity" resultType="com.klxc.pojo.PlaceInfo">
-		select * from place_info where city = #{0}  order by id desc
+		select * from place_info where city = #{city} order by id desc
 	</select>
 
     <select id="getPlaceInfo" resultType="com.klxc.pojo.PlaceInfo">
-		select * from place_info where id=#{0}
+		select * from place_info where id=#{id}
 	</select>
 
     <update id="uptPlace" parameterType="com.klxc.pojo.PlaceInfo">
@@ -45,7 +45,7 @@
 	</insert>
 
     <delete id="delPlace">
-		delete from place_info where id=#{0}
+		delete from place_info where id=#{id}
 	</delete>
 
 </mapper>

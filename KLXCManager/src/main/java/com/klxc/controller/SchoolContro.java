@@ -80,7 +80,6 @@ public class SchoolContro {
 
     @RequestMapping("/uptSchool")
     public String uptSchool(HttpServletRequest request) {
-
         SchoolInfo info = new SchoolInfo();
         RequestTool.populate(request, info);
 

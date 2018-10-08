@@ -1,5 +1,7 @@
 package com.klxc.pojo;
 
+import org.springframework.util.ObjectUtils;
+
 import java.util.List;
 
 public class InsuranceData {
@@ -55,11 +57,14 @@ public class InsuranceData {
         html += "<tr><td>姓名</td><td>手机</td><td>身份证号</td><td>邮箱</td><td>时间</td></tr>";
         html += "</thead>";
         html += "<tbody>";
-        for (InsuranceInfo info : list) {
-            html += "<tr class=\"alter\">" + "<td>" + info.getName() + "</td>" + "<td>" + info.getPhone() + "</td>"
-                    + "<td>" + info.getId_num() + "</td>" + "<td>" + info.getEmail() + "</td>" + "<td>"
-                    + info.getCreate_time() + "</td></tr>";
+        if (!ObjectUtils.isEmpty(list)){
+            for (InsuranceInfo info : list) {
+                html += "<tr class=\"alter\">" + "<td>" + info.getName() + "</td>" + "<td>" + info.getPhone() + "</td>"
+                        + "<td>" + info.getId_num() + "</td>" + "<td>" + info.getEmail() + "</td>" + "<td>"
+                        + info.getCreate_time() + "</td></tr>";
+            }
         }
+
         html += "</tbody>";
         html += "</table>";
         html += "</body>";
@@ -125,15 +130,19 @@ public class InsuranceData {
         html += "<tr><td>开户行</td><td>银行卡号</td><td>身份证正面</td><td>身份证反面</td><td>成绩单</td><td>时间</td></tr>";
         html += "</thead>";
         html += "<tbody>";
-        for (PayForInfo info : list) {
-            html += "<tr class=\"alter\">"
-                    + "<td>" + info.getBank_name() + "</td>"
-                    + "<td>" + info.getCard_no() + "</td>"
-                    + "<td><img class=\"img_wid\" src=\"" + info.getSfz_up_url() + "\"></td>"
-                    + "<td><img class=\"img_wid\" src=\"" + info.getSfz_down_url() + "\"></td>"
-                    + "<td><img class=\"img_wid\" src=\"" + info.getExam_url() + "\"></td>"
-                    + "<td>" + info.getCreate_time() + "</td></tr>";
+
+        if (!ObjectUtils.isEmpty(list)){
+            for (PayForInfo info : list) {
+                html += "<tr class=\"alter\">"
+                        + "<td>" + info.getBank_name() + "</td>"
+                        + "<td>" + info.getCard_no() + "</td>"
+                        + "<td><img class=\"img_wid\" src=\"" + info.getSfz_up_url() + "\"></td>"
+                        + "<td><img class=\"img_wid\" src=\"" + info.getSfz_down_url() + "\"></td>"
+                        + "<td><img class=\"img_wid\" src=\"" + info.getExam_url() + "\"></td>"
+                        + "<td>" + info.getCreate_time() + "</td></tr>";
+            }
         }
+
         html += "</tbody>";
         html += "</table>";
         html += "</body>";
