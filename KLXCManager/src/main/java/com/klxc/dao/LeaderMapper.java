@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface LeaderMapper {
 
-    public List<LeaderInfo> getCityLListById(int userId);
+     List<LeaderInfo> getCityLListById(int userId);
 
-    public List<LeaderInfo> getAreaLListById(int userId);
+     List<LeaderInfo> getAreaLListById(int userId);
 }

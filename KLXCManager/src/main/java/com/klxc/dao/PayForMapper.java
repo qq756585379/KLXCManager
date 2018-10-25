@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface PayForMapper {
 
-    public List<PayForInfo> getPayForList();
+     List<PayForInfo> getPayForList();
 
-    public void uptPayFor() throws Exception;
+     void uptPayFor() throws Exception;
 
 }

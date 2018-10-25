@@ -6,16 +6,16 @@ import java.util.List;
 
 public interface PClassMapper {
 
-	public int getClassCount();
+	 int getClassCount();
 	
-	public PlaceClass getClassInfo(int id);
+	 PlaceClass getClassInfo(int id);
 	
-	public List<PlaceClass> getClassList(int start, int size);
+	 List<PlaceClass> getClassList(int start, int size);
 	
-	public void uptClass(PlaceClass pClass) throws Exception;
+	 void uptClass(PlaceClass pClass) throws Exception;
 	
-	public void addClass(PlaceClass pClass) throws Exception;
+	 void addClass(PlaceClass pClass) throws Exception;
 	
-	public void delClass(int id) throws Exception;
+	 void delClass(int id) throws Exception;
 	
 }

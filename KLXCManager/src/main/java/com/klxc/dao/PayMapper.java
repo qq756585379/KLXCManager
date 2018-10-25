@@ -6,12 +6,12 @@ import java.util.List;
 
 public interface PayMapper {
 
-    public int getCount();
+     int getCount();
 
-    public List<Pay> getPayList(int start, int size);
+     List<Pay> getPayList(int start, int size);
 
-    public int getCountById(int userId);
+     int getCountById(int userId);
 
-    public List<Pay> getPayListById(int userId, int start, int size);
+     List<Pay> getPayListById(int userId, int start, int size);
 
 }

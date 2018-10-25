@@ -5,11 +5,12 @@ import com.klxc.pojo.Permission;
 import java.util.List;
 
 public interface PermissionMapper {
-    public List<Permission> getPermList();
 
-    public void uptPerm(Permission perm);
+     List<Permission> getPermList();
 
-    public void addPerm(Permission perm) throws Exception;
+     void uptPerm(Permission perm);
 
-    public void delPerm(int tid) throws Exception;
+     void addPerm(Permission perm) throws Exception;
+
+     void delPerm(int tid) throws Exception;
 }

@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface OrderMapper {
 
-    public int getCount();
+     int getCount();
 
     List<Order> getOrderList(@Param("start") int start, @Param("size") int size);
 
-    public int getCityOrderCount(String city);
+     int getCityOrderCount(String city);
 
     List<Order> getCityOrderList(@Param("city") String city, @Param("start") int start, @Param("size") int size);
 

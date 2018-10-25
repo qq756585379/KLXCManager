@@ -68,6 +68,7 @@
         </property>
     </bean>
 
+    <!--扫描dao接口-->
     <bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.klxc.dao"/>
     </bean>
